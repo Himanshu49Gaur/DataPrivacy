@@ -1,0 +1,31 @@
+# Environments
+venv/
+.venv/
+env/
+pip-wheel-metadata/
+
+# Caches
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment Variables
+.env
+.env.local
+
+# OS-Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE Configurations
+.vscode/
+.idea/
+
+# Build & Logs
+*.log
+build/
+dist/
+*.egg-info/

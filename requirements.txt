@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+pycryptodome
+twofish
+Pillow
+pypdf
+reportlab
+python-multipart

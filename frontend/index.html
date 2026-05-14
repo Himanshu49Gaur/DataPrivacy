@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPFT | Spatial Forensics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#0B0F19] h-full overflow-hidden text-slate-300 font-['Inter']">
+    <!-- Cryptographic Hex-Grid Watermark -->
+    <div class="fixed inset-0 opacity-[0.04] pointer-events-none z-0" 
+         style="background-image: radial-gradient(#22d3ee 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+    
+    <!-- Spatial Background Gradients -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-cyan-500/10 blur-[120px] rounded-full z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-emerald-500/10 blur-[120px] rounded-full z-0"></div>
+
+    <div class="relative z-10 grid h-full grid-cols-[300px_1fr] grid-rows-[1fr_30px]">
+        
+        <!-- Master Sidebar (Algorithm Index) -->
+        <aside class="glass-panel m-4 rounded-xl border-r border-white/5 flex flex-col overflow-hidden">
+            <div class="p-6 border-b border-white/5 bg-white/[0.02]">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></div>
+                    <h1 class="font-bold text-white tracking-tight">DPFT <span class="text-slate-500 font-normal">v1.0</span></h1>
+                </div>
+                
+                <!-- Algorithm Search -->
+                <div class="relative group">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors"></i>
+                    <input type="text" id="algo-search" 
+                           class="w-full bg-black/40 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-cyan-500/50 transition-all font-['JetBrains_Mono']"
+                           placeholder="Filter protocol...">
+                </div>
+            </div>
+
+            <!-- Scrollable Index -->
+            <nav class="flex-1 overflow-y-auto p-4 space-y-6 custom-scrollbar" id="sidebar-nav">
+                <!-- Block Ciphers -->
+                <section>
+                    <button class="flex items-center justify-between w-full text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 hover:text-slate-300 transition-colors cursor-pointer group">
+                        <span>Block Ciphers</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <ul class="space-y-1">
+                        <li><a href="#" data-algo="aes" class="algo-link">AES-256 GCM</a></li>
+                        <li><a href="#" data-algo="blowfish" class="algo-link">Blowfish</a></li>
+                        <li><a href="#" data-algo="des" class="algo-link">Legacy DES</a></li>
+                        <li><a href="#" data-algo="lucifer" class="algo-link">Lucifer</a></li>
+                    </ul>
+                </section>
+
+                <!-- Stream Ciphers -->
+                <section>
+                    <button class="flex items-center justify-between w-full text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 hover:text-slate-300 transition-colors cursor-pointer">
+                        <span>Stream Ciphers</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <ul class="space-y-1">
+                        <li><a href="#" data-algo="chacha20" class="algo-link">ChaCha20</a></li>
+                        <li><a href="#" data-algo="salsa20" class="algo-link">Salsa20</a></li>
+                        <li><a href="#" data-algo="rc4" class="algo-link">RC4 ArcFour</a></li>
+                        <li><a href="#" data-algo="seal" class="algo-link">SEAL</a></li>
+                        <li><a href="#" data-algo="lfsr" class="algo-link">LFSR</a></li>
+                        <li><a href="#" data-algo="nlfsr" class="algo-link">NLFSR</a></li>
+                        <li><a href="#" data-algo="cellular_automata" class="algo-link">Cellular Automata</a></li>
+                    </ul>
+                </section>
+
+                <!-- Asymmetric -->
+                <section>
+                    <button class="flex items-center justify-between w-full text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 hover:text-slate-300 transition-colors cursor-pointer">
+                        <span>Asymmetric</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <ul class="space-y-1">
+                        <li><a href="#" data-algo="rsa" class="algo-link">RSA Primitive</a></li>
+                        <li><a href="#" data-algo="ecc" class="algo-link">Elliptic Curve</a></li>
+                        <li><a href="#" data-algo="ecdh" class="algo-link">ECDH Exchange</a></li>
+                        <li><a href="#" data-algo="ecdsa" class="algo-link">ECDSA Signing</a></li>
+                        <li><a href="#" data-algo="elgamal" class="algo-link">ElGamal</a></li>
+                        <li><a href="#" data-algo="pgp" class="algo-link">OpenPGP</a></li>
+                        <li><a href="#" data-algo="rabin" class="algo-link">Rabin</a></li>
+                        <li><a href="#" data-algo="diffie_hellman" class="algo-link">Diffie-Hellman</a></li>
+                    </ul>
+                </section>
+
+                <!-- Auth & Hashing -->
+                <section>
+                    <button class="flex items-center justify-between w-full text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 hover:text-slate-300 transition-colors cursor-pointer">
+                        <span>Hashing & Auth</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <ul class="space-y-1">
+                        <li><a href="#" data-algo="sha3_hasher" class="algo-link">SHA-3 Keccak</a></li>
+                        <li><a href="#" data-algo="hmac_auth" class="algo-link">HMAC Auth</a></li>
+                        <li><a href="#" data-algo="password_hasher" class="algo-link">Password KDF</a></li>
+                        <li><a href="#" data-algo="key_vault" class="algo-link">Secure Vault</a></li>
+                    </ul>
+                </section>
+
+                <!-- Classical Ciphers -->
+                <section>
+                    <button class="flex items-center justify-between w-full text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 hover:text-slate-300 transition-colors cursor-pointer">
+                        <span>Classical & Historical</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <ul class="space-y-1">
+                        <li><a href="#" data-algo="monoalphabetic" class="algo-link">Monoalphabetic Cipher</a></li>
+                        <li><a href="#" data-algo="polyalphabetic" class="algo-link">Polyalphabetic Cipher</a></li>
+                        <li><a href="#" data-algo="transposition" class="algo-link">Transposition Cipher</a></li>
+                    </ul>
+                </section>
+
+                <!-- Media Forensic -->
+                <section>
+                    <button class="flex items-center justify-between w-full text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 hover:text-slate-300 transition-colors cursor-pointer">
+                        <span>Media Forensic</span>
+                        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </button>
+                    <ul class="space-y-1">
+                        <li><a href="#" data-algo="stego/encode" class="algo-link">LSB Encode</a></li>
+                        <li><a href="#" data-algo="stego/decode" class="algo-link">LSB Decode</a></li>
+                        <li><a href="#" data-algo="watermark/image" class="algo-link">Image Watermark</a></li>
+                        <li><a href="#" data-algo="watermark/pdf" class="algo-link">PDF Watermark</a></li>
+                    </ul>
+                </section>
+            </nav>
+        </aside>
+
+        <!-- Main Canvas & 3D Stage -->
+        <main id="stage" class="relative flex items-center justify-center p-8 overflow-hidden">
+            <div id="active-tool-container" class="w-full max-w-5xl">
+                <!-- Landing State -->
+                <div class="floating-card glass-panel p-12 text-center space-y-6">
+                    <div class="w-20 h-20 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto border border-cyan-500/30">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-cyan-400"></i>
+                    </div>
+                    <h2 class="text-4xl font-bold text-white tracking-tight">System Initialization Complete</h2>
+                    <p class="text-slate-400 max-w-lg mx-auto leading-relaxed">Select a cryptographic primitive or forensic module from the index to begin analysis in the spatial canvas.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Terminal Status Bar -->
+        <footer class="col-span-2 bg-black/80 border-t border-white/5 flex items-center px-4 space-x-6">
+            <div class="flex items-center space-x-2">
+                <span class="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">Status:</span>
+                <span class="text-[10px] font-medium text-emerald-400 uppercase tracking-tighter">Ready</span>
+            </div>
+            <div class="flex-1 flex items-center space-x-4 text-[10px] font-['JetBrains_Mono'] text-slate-500 overflow-hidden">
+                <span class="whitespace-nowrap">API_ENDPOINT: http://localhost:8000/api</span>
+                <span class="whitespace-nowrap">SESSION_TOKEN: 8xFD-2200-LL91</span>
+                <div id="status-ticker" class="flex-1 text-right">AWAITING_INPUT_SIGNAL...</div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Templates (Hidden) -->
+    <template id="template-cipher">
+        <div class="tilt-effect floating-card glass-panel p-8 w-full animate-in fade-in zoom-in duration-500">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-4">
+                    <div class="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
+                        <i data-lucide="key" class="w-6 h-6 text-cyan-400"></i>
+                    </div>
+                    <div>
+                        <h2 id="tool-name" class="text-2xl font-bold text-white">Algorithm</h2>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Cryptographic Primitive</p>
+                    </div>
+                </div>
+                <div class="flex bg-black/40 p-1 rounded-xl border border-white/5">
+                    <button id="btn-mode-encrypt" class="px-6 py-2 rounded-lg text-sm font-bold bg-cyan-500 text-black shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all">ENCRYPT</button>
+                    <button id="btn-mode-decrypt" class="px-6 py-2 rounded-lg text-sm font-bold text-slate-400 hover:text-white transition-all">DECRYPT</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+                <!-- IO Section -->
+                <div class="space-y-4">
+                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest">Input Stream</label>
+                    <textarea id="input-data" class="w-full h-64 bg-black/40 border border-white/10 rounded-xl p-6 text-cyan-300 font-['JetBrains_Mono'] focus:outline-none focus:border-cyan-500/50 transition-all text-sm resize-none custom-scrollbar" placeholder="Enter plaintext or ciphertext..."></textarea>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest">Output result</label>
+                        <button id="btn-copy" class="text-[10px] font-bold text-cyan-500 hover:text-cyan-300 transition-colors uppercase tracking-widest">Copy Buffer</button>
+                    </div>
+                    <textarea id="output-data" readonly class="w-full h-64 bg-black/60 border border-white/10 rounded-xl p-6 text-emerald-400 font-['JetBrains_Mono'] focus:outline-none text-sm resize-none custom-scrollbar" placeholder="Awaiting execution..."></textarea>
+                </div>
+
+                <!-- Parameters -->
+                <div class="col-span-2 grid grid-cols-3 gap-6 pt-4 border-t border-white/5">
+                    <div class="space-y-2">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest">Master Key</label>
+                        <input type="text" id="param-key" class="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-cyan-300 font-['JetBrains_Mono'] text-sm focus:outline-none focus:border-cyan-500/50" placeholder="0x...">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest">Nonce / IV</label>
+                        <input type="text" id="param-nonce" class="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-cyan-300 font-['JetBrains_Mono'] text-sm focus:outline-none focus:border-cyan-500/50" placeholder="RANDOM_BYTES">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest">Context Pos</label>
+                        <input type="number" id="param-pos" value="0" class="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-cyan-300 font-['JetBrains_Mono'] text-sm focus:outline-none focus:border-cyan-500/50">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-media">
+        <div class="tilt-effect floating-card glass-panel p-10 w-full max-w-3xl mx-auto animate-in fade-in zoom-in duration-500">
+            <div class="flex items-center space-x-4 mb-8">
+                <div class="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                    <i data-lucide="file-digit" class="w-6 h-6 text-emerald-400"></i>
+                </div>
+                <div>
+                    <h2 id="media-tool-name" class="text-2xl font-bold text-white">Media Forensic</h2>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Stateless Media Processing</p>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Dropzone -->
+                <div id="dropzone" class="border-2 border-dashed border-white/10 rounded-2xl p-12 text-center group hover:border-emerald-500/50 transition-all cursor-pointer bg-black/20">
+                    <input type="file" id="media-input" class="hidden">
+                    <i data-lucide="upload-cloud" class="w-12 h-12 text-slate-600 group-hover:text-emerald-400 transition-all mx-auto mb-4"></i>
+                    <p id="file-name-display" class="text-slate-400 font-medium">Drop media file here or click to browse</p>
+                    <p class="text-[10px] text-slate-600 uppercase tracking-widest mt-2">Maximum file size: 20MB</p>
+                </div>
+
+                <!-- Text Input -->
+                <div class="space-y-2" id="media-payload-group">
+                    <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest">Secret Payload / Watermark</label>
+                    <textarea id="media-payload" class="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-emerald-300 font-['JetBrains_Mono'] text-sm focus:outline-none focus:border-emerald-500/50 h-24 resize-none" placeholder="Enter message text..."></textarea>
+                </div>
+
+                <button id="btn-media-exec" class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                    EXECUTE FORENSIC PROTOCOL
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Global Toasts -->
+    <div id="toast-layer" class="fixed bottom-12 right-12 z-[100] flex flex-col space-y-4 items-end"></div>
+
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
