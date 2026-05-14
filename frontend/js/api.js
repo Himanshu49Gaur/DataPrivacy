@@ -3,7 +3,7 @@
  * Encapsulates all network requests to the FastAPI backend.
  */
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = 'https://dataprivacy-6bmq.onrender.com/api';
 
 window.api = {
     /**
