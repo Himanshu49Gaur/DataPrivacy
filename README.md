@@ -1,5 +1,5 @@
 # Data Privacy & Forensics Toolkit (DPFT)
-### *Advanced Spatial UI Environment for Cryptographic Engineering*
+### *Advanced Spatial UI Environment for Cryptographic*
 
 ---
 
